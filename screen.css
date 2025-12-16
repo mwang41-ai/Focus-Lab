@@ -1,0 +1,183 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 18px;
+  line-height: 1.7;
+  background-color: #111;
+  color: #f2f2f2;
+}
+
+header, footer {
+  padding: 16px 24px;
+  background-color: #000;
+}
+
+header {
+  border-bottom: 1px solid #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+section {
+  margin-bottom: 32px;
+}
+
+footer {
+  border-top: 1px solid #333;
+  font-size: 14px;
+  color: #999;
+  text-align: center;
+}
+
+h1, h2, h3, h4 {
+  margin: 0 0 10px 0;
+  color: #fff;
+  font-family: "DM Serif Display", serif;
+  letter-spacing: 0.5px;
+}
+
+h1 {
+  font-size: 60px;
+  letter-spacing: 1px;
+}
+
+h2 {
+  font-size: 38px;
+  text-align: center;
+}
+
+h3 {
+  font-size: 26px;
+  text-align: left;
+}
+
+.byline {
+  margin: 0 0 16px 0;
+  font-size: 18px;
+  color: #bbb;
+  text-align: right;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+nav a {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 15px;
+  color: #cfcfcf;
+  padding: 4px 10px;
+  border-radius: 4px;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+nav a:hover {
+  color: #000;
+  background-color: #fff;
+}
+
+.timer-card, .widget-card, .resource-card {
+  margin-top: 16px;
+  padding: 16px 20px;
+  border: 1px solid #333;
+  border-radius: 10px;
+  background-color: #181818;
+}
+
+.timer-controls button, .widget-card button, .resource-btn {
+  padding: 7px 15px;
+  font-size: 14px;
+  border-radius: 999px;
+  border: 1px solid #444;
+  background-color: #222;
+  color: #f2f2f2;
+  cursor: pointer;
+  transition: background-color 0.15s ease,
+              transform 0.1s ease,
+              color 0.15s ease;
+}
+
+.timer-controls button:hover, .widget-card button:hover, .resource-btn:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.resource-btn {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.timer-card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.timer-display {
+  font-family: "DM Serif Display", serif;
+  font-size: 32px;
+  letter-spacing: 2px;
+}
+
+.timer-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.timer-message {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #bbb;
+  font-style: italic;
+}
+
+.widget-output {
+  margin-top: 12px;
+  font-size: 15px;
+  color: #ddd;
+  line-height: 1.6;
+}
+
+.resource-card h4 {
+  margin: 0 0 6px 0;
+}
+
+.resource-card p {
+  margin: 0 0 13px 0;
+  font-size: 14px;
+  color: #ccc;
+}
+
+.img {
+  margin: 20px auto;
+  max-width: 50%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 600px) {
+  nav ul {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  h1 {
+    font-size: 44px;
+  }
+}

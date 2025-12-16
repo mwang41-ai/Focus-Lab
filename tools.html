@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="screen.css">
+
+  <title>FocusLab – Tools</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <h1>FocusLab</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="tools.html">Tools</a></li>
+        <li><a href="resources.html">Resources</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+  <h2>Tools & Exercises</h2>
+  <p class="byline">By Alex &amp; Nari</p>
+
+  <section>
+    <h3>What Tools Are Available</h3>
+    <ol>
+      <li>
+        <strong>Pomodoro Focus Timer</strong> – A JavaScript-based timer where users can start a 25-minute study session. When the timer ends, the site displays a motivational message to encourage short breaks and sustainable study habits.
+      
+      <img src="Images/pomodoro.jpg" class="img" alt="Pomodoro Focus Timer">
+      
+      </li>
+
+      <li>
+        <strong>Mindful Weather &amp; Advice Widget</strong> – This feature uses two APIs: Open-Meteo for current weather and AdviceSlip for random life advice. For example, it might display:
+        <em>
+          “It's 65ºF and sunny — a great day to stay focused! Here's your advice: ‘Start where you are. Use what you have. Do what you can!’”
+        </em>
+        
+        <img src="Images/weather.jpg" class="img" alt="Weather and Advice Widget">
+      </li>
+
+    </ol>
+  </section>
+
+  <section>
+    <h3>Why Tools Matter</h3>
+    <p>
+      FocusLab includes a set of interactive study tools designed to help students move from theory into practice. Although many people understand what attention is in the abstract, it can still be difficult to apply these ideas when facing real-world pressures such as deadlines, distractions, and digital overload. Tools are therefore important because they give visitors something concrete to try, whether they have ten minutes between classes or an hour to study at home.
+    </p>
+    <p>
+      Our goal is not to enforce perfection or rigid discipline. Instead, these features encourage experimentation and reflection. By trying simple activities over time, students begin to observe how small adjustments shape their focus, energy, and motivation.
+    </p>
+  </section>
+
+  <section>
+  <h3>Pomodoro Focus Timer</h3>
+  <p>
+    The Pomodoro Timer is one of the core tools included in FocusLab. It follows a well-known method that breaks work into twenty-five minute focus periods followed by short breaks. Visitors can start the session, work with attention until the timer finishes, and then take a pause before deciding whether to begin the next cycle. This method emphasizes rhythm rather than intensity and encourages a kinder approach to productivity.
+  </p>
+  <p>
+    Students can use this timer for reading, writing, language study, or focused note-taking. Over time, repeated cycles build endurance and help people recognize when their attention naturally rises and falls.
+  </p>
+   
+
+  <div class="timer-card">
+    <h3>Pomodoro Focus Timer</h3>
+
+    <div id="timer-display">25:00</div>
+      
+      <button type="button" onclick="runTimer()">Start Timer</button>
+      
+  <p id="timer-message">
+    Press “Start Timer” to begin a 25-minute focus session.
+  </p>
+  </div>
+
+</section>
+
+
+  <section>
+  <h3>Mindful Weather &amp; Advice Widget</h3>
+  <p>
+    This widget combines two APIs—Open-Meteo, which provides real-time weather data, and AdviceSlip, which returns simple reflective messages. When visitors check the tool, they see the current weather conditions for a sample location, along with a small piece of guidance such as “Take a moment to breathe.” The intention is to introduce moments of grounding, even when academic tasks feel heavy.
+  </p>
+  <p>
+    Instead of overwhelming students with data, the widget offers just enough contextual awareness to shift attention and encourage self-awareness. While weather information may seem unrelated to studying, it reminds students that their bodies, environments, and habits influence their ability to focus.
+  </p>
+
+  <div class="widget-card">
+  <h3>Mindful Weather & Advices</h3>
+ 
+  <input type= "text" id="location" placeholder="Enter city" size="20">
+  <button type="button" onclick="fetchWeatherAndAdvice()">Submit</button>
+
+    <div class="widget-output">
+      Temperature (°F): <span id="temp_f"></span><br>
+      Temperature (°C): <span id="temp_c"></span><br>
+     Advice: <span id="advice"></span>
+    </div>
+    </div>
+</section>
+
+
+  <section>
+    <h3>What Visitors Can Do With These Tools</h3>
+    <p>
+      Students are encouraged to use the tools in whatever way suits them best. For example, someone might start the Pomodoro Timer before reviewing lecture notes. Another might open the Advice widget and reflect before planning their tasks for the day. Rather than prescribing one correct way of working, FocusLab supports autonomy: students can explore, observe, and adapt.
+    </p>
+    <p>
+      The tools are intentionally simple so that visitors feel comfortable using them repeatedly. A simple timer or encouraging prompt can become a daily touchpoint that interrupts cycles of avoidance, helps reset attention, or signals a brief pause when work begins to feel overwhelming.
+    </p>
+  </section>
+
+  <section>
+    <h3>A Space for Growth</h3>
+    <p>
+      FocusLab treats personal productivity not as a competition but as a process of learning. The tools page serves as a practical space where visitors can test strategies, make adjustments, and build a more compassionate approach to studying. Our hope is that these resources become small supports that help students navigate stress, improve concentration, and develop a sustainable relationship with learning.
+    </p>
+  </section>
+
+  </main>
+
+    <footer>
+    <p>FocusLab</p>
+    <p>&copy; 2025. Designed &amp; built by Alex &amp; Nari.</p>
+  </footer>
+
+
+  
+
+  <script>
+    let remainingSeconds = 25 * 60;
+    let timerRunning = false;
+
+    function runTimer() {
+      if (timerRunning) return;
+      timerRunning = true;
+
+      document.getElementById("timer-message").innerHTML = 
+      "Focus time is running. You’ve got this.";
+
+       let interval = setInterval(function () {
+        remainingSeconds--;
+
+      let minutes = Math.floor(remainingSeconds / 60);
+      let seconds = remainingSeconds % 60;
+
+      let timeText =
+      String(minutes).padStart(2, "0") + ":" +
+      String(seconds).padStart(2, "0");
+
+      document.getElementById("timer-display").innerHTML = timeText;
+
+        if (remainingSeconds <= 0) {
+          clearInterval(interval);
+          timerRunning = false;
+
+          document.getElementById("timer-message").innerHTML = 
+            "Time’s up! Take a short break.";
+        }
+      }, 1000); // update every second
+    }
+
+    
+
+    async function fetchWeatherAndAdvice() {
+      var city = document.getElementById("location").value;
+
+      var geoUrl =
+      "https://geocoding-api.open-meteo.com/v1/search?name=" +
+      city +
+      "&count=1";
+
+      var geoResponse = await fetch(geoUrl);
+      var geoData = await geoResponse.json();
+
+      if (!geoData.results) {
+        alert("City not found");
+        return;
+      }
+
+      var latitude = geoData.results[0].latitude;
+      var longitude = geoData.results[0].longitude;
+
+      var weatherUrl =
+          "https://api.open-meteo.com/v1/forecast?latitude=" +
+          latitude +
+          "&longitude=" +
+          longitude +
+          "&current_weather=true";
+
+          var response = await fetch(weatherUrl);
+          var weatherData = await response.json();
+
+          var tempC = weatherData.current_weather.temperature;
+          var tempF = Math.round((tempC * 9) / 5 + 32);
+
+          document.getElementById("temp_c").innerText = tempC;
+          document.getElementById("temp_f").innerText = tempF;
+
+          var adviceResponse = await fetch("https://api.adviceslip.com/advice");
+          var adviceData = await adviceResponse.json()
+
+          document.getElementById("advice").innerText = adviceData.slip.advice;
+    }  
+    
+  </script>
+</body>
+</html>
